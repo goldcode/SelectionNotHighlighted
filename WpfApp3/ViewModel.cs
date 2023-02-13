@@ -8,26 +8,43 @@ using System.Threading.Tasks;
 
 namespace WpfApp3
 {
-    public class Person
+
+    public class PersonViewModel
     {
+        public PersonViewModel(ObservableCollection<PersonViewModel> personViewModels)
+        {
+            PersonViewModels = personViewModels;
+        }
         public string Name { get; set; } = string.Empty;
+
         public override string ToString()
         {
             return Name;
         }
+
+        public ObservableCollection<PersonViewModel> PersonViewModels { get; set; }
+
+        public ObservableCollection<PersonViewModel> SelectedPersonViewModels { get; set; } = new();
+
     }
 
-    public class ViewModel
+    public partial class ViewModel : ObservableObject
     {
-        public ObservableCollection<Person> PersonViewModels { get; set; } = new ();
+        public ObservableCollection<PersonViewModel> PersonViewModels { get;  } = new();
 
-        public ObservableCollection<Person> SelectedPersonViewModels { get; set; } = new();
-
-
-        public ViewModel(ObservableCollection<Person> personViewModels, ObservableCollection<Person> selectedPersonViewModels)
+        public ViewModel()
         {
-            PersonViewModels = personViewModels;
-            SelectedPersonViewModels = selectedPersonViewModels;
+            var tom = new PersonViewModel(PersonViewModels) { Name = "Tom" };
+            var dick = new PersonViewModel(PersonViewModels) { Name = "Dick" };
+            var harry = new PersonViewModel(PersonViewModels) { Name = "Harry" };
+
+            PersonViewModels.Add(tom);
+            PersonViewModels.Add(dick);
+            PersonViewModels.Add(harry);
+            foreach (var p in PersonViewModels)
+            {
+                p.SelectedPersonViewModels.Add(PersonViewModels.Last());
+            }
         }
     }
 }

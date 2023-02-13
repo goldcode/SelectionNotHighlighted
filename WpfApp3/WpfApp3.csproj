@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0-preview3" />
-    <PackageReference Include="MahApps.Metro" Version="3.0.0-alpha0419" />
+    <PackageReference Include="MahApps.Metro" Version="3.0.0-alpha0427" />
   </ItemGroup>
 
 </Project>

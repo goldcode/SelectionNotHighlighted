@@ -1,7 +1,5 @@
-﻿using MahApps.Metro.Controls;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,15 +16,13 @@ using System.Windows.Shapes;
 namespace WpfApp3
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Person.xaml
     /// </summary>
-    public partial class MainWindow : MetroWindow
+    public partial class Person : UserControl
     {
-        public MainWindow()
+        public Person()
         {
             InitializeComponent();
-            DataContext = new ViewModel();
         }
-
     }
 }

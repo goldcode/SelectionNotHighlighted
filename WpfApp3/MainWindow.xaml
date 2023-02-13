@@ -11,14 +11,36 @@
     Height="450"
     mc:Ignorable="d">
     <StackPanel>
-        <mah:MultiSelectionComboBox
-            mah:MultiSelectorHelper.SelectedItems="{Binding SelectedPersonViewModels, Mode=TwoWay}"
-            mah:TextBoxHelper.AutoWatermark="True"
-            mah:TextBoxHelper.UseFloatingWatermark="True"
-            DisplayMemberPath="Name"
-            EditableTextStringComparision="CurrentCultureIgnoreCase"
-            ItemsSource="{Binding PersonViewModels, Mode=TwoWay}"
-            ObjectToStringComparer="{mah:DefaultObjectToStringComparer}"
-            Separator=", " />
+
+        <!--  works  -->
+        <TextBlock Text="SELECTION WORKS" />
+        <ItemsControl ItemsSource="{Binding PersonViewModels}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <mah:MultiSelectionComboBox
+                        VerticalAlignment="Center"
+                        mah:MultiSelectorHelper.SelectedItems="{Binding SelectedPersonViewModels}"
+                        mah:TextBoxHelper.AutoWatermark="True"
+                        mah:TextBoxHelper.UseFloatingWatermark="True"
+                        EditableTextStringComparision="CurrentCultureIgnoreCase"
+                        InterceptMouseWheelSelection="False"
+                        ItemsSource="{Binding PersonViewModels}"
+                        ObjectToStringComparer="{mah:DefaultObjectToStringComparer}"
+                        Separator=", "
+                        StringToObjectParser="{x:Static mah:DefaultStringToObjectParser.Instance}"
+                        TextWrapping="Wrap" />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <!--  doesn't work  -->
+        <TextBlock Text="SELECTION DOES NOT WORK" />
+        <ItemsControl ItemsSource="{Binding PersonViewModels}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <local:Person />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </StackPanel>
 </mah:MetroWindow>

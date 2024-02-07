@@ -14,6 +14,7 @@ namespace WpfApp3
         public PersonViewModel(ObservableCollection<PersonViewModel> personViewModels)
         {
             PersonViewModels = personViewModels;
+            // also some changes.
         }
         public string Name { get; set; } = string.Empty;
 

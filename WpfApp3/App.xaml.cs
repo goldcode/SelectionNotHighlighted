@@ -13,5 +13,6 @@ namespace WpfApp3
     /// </summary>
     public partial class App : Application
     {
+// added an extra comment here and fixed this issue.
     }
 }
